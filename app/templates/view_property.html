@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+{% endblock %}
+<title>Register a new Property</title>
+
+{% block main %}
+    <div id="property-area">
+        <img src = '/{{ prop.media_addr }}' class = "property-detail-image"/>
+        <br>
+        <span>{{ prop.title }}</span>
+        <br>
+        <span>{{ prop.price }}  {{ prop.typ }}</span>
+        <br>
+        <span>{{ prop.descr }}</span>
+        <br>
+        <span>{{ prop.no_bed }} {{ prop.no_bath }} </span>
+        <br>
+        <span>{{ prop.loc }}</span>
+        <br>
+        <button id="email-realtor">Email Realtor</button>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/app.min.js') }}" charset="utf-8"></script>
+{% endblock %}

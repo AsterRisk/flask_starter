@@ -5,13 +5,22 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-from app import app
-from flask import render_template, request, redirect, url_for
 
+
+from flask import render_template, request, redirect, url_for, flash, send_from_directory
+from werkzeug.utils import secure_filename
+from .__init__ import app
+from .forms import PropertyForm
+from .models import Property
+import os
+from .setup import query
 
 ###
 # Routing for your application.
 ###
+
+def is_picture(filename: str):
+    return filename.endswith('jpg') or filename.endswith('jpeg') or filename.endswith('png') or filename.endswith('webp')
 
 @app.route('/')
 def home():
@@ -23,6 +32,66 @@ def home():
 def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
+
+@app.route('/property/', methods = ["GET", "POST"])
+def add_property():
+    form = PropertyForm()
+    if request.method == "GET":
+        return render_template('property.html', form = form)
+    else:
+        if request.method == "POST":
+            savepath = None
+            if form.validate_on_submit():
+                if (form.typ.data == "Select a type..."):
+                    flash("Please select a type of property.", "danger")
+                    return  render_template('property.html', form = form)
+                img = form.media.data
+                print("NAME:{}".format(img))
+                filename = secure_filename(img.filename)
+                if (is_picture(filename)):
+                    savepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                    print("\nSAVEPATH: {}\n".format(savepath))
+                    img.save(savepath)
+                if (not(is_picture(filename))):
+                    flash("Please only upload images in the photo section.", "danger")
+                    return  render_template('property.html', form = form)
+                try:
+                    prop = Property(title = form.title.data, no_bath=form.no_bath.data, no_bed=form.no_bed.data, location = form.location.data,\
+                                    price= form.price.data, typ = form.typ.data, desc = form.desc.data, media_addr=savepath)
+                    flash("Property has been added successfully!", 'success')
+                except Exception as e:
+                    print("ERROR ERROR: \n\n{}\n\n".format(e))
+                    flash("Something went wrong..., try again later.", "danger")
+                return redirect(url_for('home'))
+
+@app.route("/uploads/<filename>")
+def get_file(filename: str):
+    return send_from_directory(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER']), filename)
+
+@app.route("/properties/")
+def view_properties():
+    sql = "Select * from properties;"
+    try:
+        properties = query(sql).fetchall()
+        return render_template('view_properties.html', properties = properties)
+    except Exception as e:
+        print("\nERRO ERROR:{}\n".format(e))
+        flash("No properties currently listed.", "danger")
+        properties = []
+        return render_template('view_properties.html', properties = properties)
+
+@app.route("/property/<property_id>")
+def view_property(property_id):
+    sql = "select * from properties where prop_id={};".format(property_id)
+    try:
+        prop = query(sql).fetchone()
+        return render_template('view_property.html', prop = prop)
+    except Exception as e:
+        print("ERROR\n{}\nERROR".format(e))
+        flash("This property does not exist.", "danger")
+        return redirect(url_for('home'))
+
+
 
 
 ###

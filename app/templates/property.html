@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+{% endblock %}
+<title>Register a new Property</title>
+
+{% block main %}
+    <h1>Add New Property</h1>
+    <div id = "prop-form-area">
+        <form id="prop-form" action = "property" method = "POST" enctype="multipart/form-data">
+            {{ form.csrf_token  }}
+            {{ form.title.label }}
+            <br>
+            {{ form.title.__html__() }}
+            <br>
+
+            <br>
+            {{ form.desc.label }}
+            <br>
+            {{ form.desc.__html__() }}
+            <br>
+
+            <br>
+            {{ form.no_bed.label }} {{form.no_bath.label}}
+            <br>
+            {{ form.no_bed.__html__() }} {{ form.no_bath.__html__() }}
+            <br>
+
+            <br>
+            {{ form.price.label }} {{form.typ.label}}
+            <br>
+            {{ form.price.__html__() }} {{ form.typ.__html__() }}
+            <br>
+
+            <br>
+            {{ form.location.label }}
+            <br>
+            {{ form.location.__html__() }}
+            <br>
+
+            <br>
+            {{ form.email.label }}
+            <br>
+            {{ form.email.__html__() }}
+            <br>
+
+            <br>
+            {{ form.media.label }}
+            <br>
+            {{ form.media.__html__() }}
+            <br>
+            <br>
+            {{ form.submit.__html__() }}
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/app.min.js') }}" charset="utf-8"></script>
+{% endblock %}

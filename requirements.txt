@@ -5,3 +5,11 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
 Werkzeug==1.0.1
+flask
+flask-wtf
+sqlalchemy
+flask-sqlalchemy
+flask-sessions
+wtforms
+wtforms.validators
+email_validator

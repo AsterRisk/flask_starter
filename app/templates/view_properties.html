@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+{% endblock %}
+<title>Register a new Property</title>
+
+{% block main %}
+
+    <h1>Properties</h1>
+
+    <div id = "property-area">
+    {% for property in properties %}
+    
+        <div id = "property-{{ property.prop_id }}" class = "property-card">
+            <img src = '/{{ property.media_addr }}' class = "property-image"/>
+            <br>
+            <span>{{ property.title }}</span>
+            <br>
+            <span>{{ property.loc }}</span>
+            <br>
+            <span class = "property-price">{{ property.price }}</span>
+            <br>
+            <br>
+            <a href = "/property/{{ property.prop_id }}"><button class = "view-property-btn">View Property</button></a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/app.min.js') }}" charset="utf-8"></script>
+{% endblock %}
