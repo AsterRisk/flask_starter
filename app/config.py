@@ -5,13 +5,13 @@ class Config(object):
     DEBUG = False
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'Som3$ec5etK*y'
     SQL_DATABASE_ADDRESS = '127.0.0.1' or 'localhost'
-    DATABASE_NAME = 'info3180_project'
+    DATABASE_NAME = 'properties'
     UPLOAD_FOLDER = "app/uploads/"
     TEMPLATE_FOLDER = "app/templates/"
     STATIC_FOLDER = "app/static/"
-    SQLALCHEMY_USERNAME = os.environ.get('PROJECT_DATABASE_USERNAME') or 'root'
-    SQLALCHEMY_PASSWORD =  os.environ.get('PROJECT_DATABASE_PASSWORD') or ''
-    SQLALCHEMY_DATABASE_URI = os.environ.get('PROJECT_DATABASE_URL') or 'mysql://{}:{}@{}/{}'.format(SQLALCHEMY_USERNAME, SQLALCHEMY_PASSWORD, SQL_DATABASE_ADDRESS, DATABASE_NAME)
+    SQLALCHEMY_USERNAME = 'postgres'
+    SQLALCHEMY_PASSWORD =  '7931_Latias_1828'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('PROJECT_DATABASE_URL') or 'postgresql://{}:{}@{}/{}'.format(SQLALCHEMY_USERNAME, SQLALCHEMY_PASSWORD, SQL_DATABASE_ADDRESS, DATABASE_NAME)
 
     print("\nDatabase URI: {}\n".format(SQLALCHEMY_DATABASE_URI))
     
