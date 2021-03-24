@@ -3,7 +3,7 @@ main{
 }
 
 .property-card{
-    width: 80%;
+    width: 90%;
     box-shadow: 5px 0px 5px 0px #ccc;
     grid-area: 'property-card';
     margin-bottom: 20px;
@@ -35,7 +35,7 @@ main{
     padding-left: 40px;
     padding-right: 40px;
     border-radius:25px;
-    background-color: rgba(44, 44, 248);
+    background-color: rgb(44, 115, 248);
     color: #fff;
     font-weight: bold;
 }
