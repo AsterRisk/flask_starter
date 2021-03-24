@@ -1,0 +1,52 @@
+main{
+    background-color: #eee;
+}
+
+.property-card{
+    width: 80%;
+    box-shadow: 5px 0px 5px 0px #ccc;
+    grid-area: 'property-card';
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.property-image{
+    width:100%;
+}
+
+.property-info{
+    margin-left:10px;
+}
+
+#property-area{
+    display: grid;
+    grid:
+        'property-card property-card property-card'
+        'property-card property-card property-card';
+}
+
+.property-title{
+    font-weight: bold;
+}
+
+.property-price{
+    margin-top:5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius:25px;
+    background-color: rgba(44, 44, 248);
+    color: #fff;
+    font-weight: bold;
+}
+
+.view-property-btn{
+    width:100%;
+    background-color: rgb(31, 204, 216);
+    border:0px;
+    color:#fff;
+    font-weight: bold;
+    box-sizing:border-box;
+    background-clip:border-box;
+    border-radius: 5px;
+}

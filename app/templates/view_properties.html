@@ -1,25 +1,27 @@
 {% extends "base.html" %}
 
 {% block css %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/property_list.css')}}">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 {% endblock %}
 <title>Register a new Property</title>
 
 {% block main %}
-
-    <h1>Properties</h1>
-
+    <br>
+    <h1><b>Properties</b></h1>
+    <br>
     <div id = "property-area">
     {% for property in properties %}
     
-        <div id = "property-{{ property.prop_id }}" class = "property-card">
+        <div id = "property-{{ property.prop_id }}" class = "property-info property-card">
             <img src = '/{{ property.media_addr }}' class = "property-image"/>
             <br>
-            <span>{{ property.title }}</span>
+            <span class = "property-title property-info">{{ property.title }}</span>
             <br>
-            <span>{{ property.loc }}</span>
+            <span class = "property-info"><i style='font-size:24px' class='fas fa-map-marker-alt'></i>{{ property.loc }}</span>
             <br>
-            <span class = "property-price">{{ property.price }}</span>
+            <br>
+            <span class = "property-info property-price">${{ property.price }}</span>
             <br>
             <br>
             <a href = "/property/{{ property.prop_id }}"><button class = "view-property-btn">View Property</button></a>

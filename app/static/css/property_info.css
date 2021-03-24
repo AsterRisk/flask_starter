@@ -1,0 +1,74 @@
+main{
+    background-color: #eee;
+}
+
+.property-card{
+    width: 80%;
+    box-shadow: 5px 0px 5px 0px #ccc;
+    grid-area: 'property-card';
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#property-area{
+    display: grid;
+    grid:
+        'property-detail-image property-info property-info';
+}
+
+#property-detail{
+    grid-area: "property-info";
+    background-color: #fff;
+    width: 100%;
+    padding-left: 50px;
+}
+
+.half{
+    width:37.5%;
+}
+
+.property-picture{
+    width:400px;
+}
+
+#property-detail-image{
+    width:100%;
+    grid-area: "property-detail-image";
+}
+
+.property-title{
+    font-weight: bold;
+}
+
+#property-area{
+    background-color: #fff;
+}
+
+.property-price{
+    margin-top:5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius:25px;
+    background-color: rgba(44, 44, 248);
+    color: #fff;
+    font-weight: bold;
+}
+
+.prop-beds{
+    margin-right:50px;
+}
+
+.property-type{
+    margin-top:5px;
+    padding-left: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 40px;
+    border-radius:25px;
+    background-color: rgb(248, 180, 34);
+    color: #fff;
+    font-weight: bold;
+}

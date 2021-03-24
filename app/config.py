@@ -10,7 +10,7 @@ class Config(object):
     TEMPLATE_FOLDER = "app/templates/"
     STATIC_FOLDER = "app/static/"
     SQLALCHEMY_USERNAME = os.environ.get('PROJECT_DATABASE_USERNAME') or 'root'
-    SQLALCHEMY_PASSWORD =  os.environ.get('PROJECT_DATABASE_PASSWORD')
+    SQLALCHEMY_PASSWORD =  os.environ.get('PROJECT_DATABASE_PASSWORD') or ''
     SQLALCHEMY_DATABASE_URI = os.environ.get('PROJECT_DATABASE_URL') or 'mysql://{}:{}@{}/{}'.format(SQLALCHEMY_USERNAME, SQLALCHEMY_PASSWORD, SQL_DATABASE_ADDRESS, DATABASE_NAME)
 
     print("\nDatabase URI: {}\n".format(SQLALCHEMY_DATABASE_URI))

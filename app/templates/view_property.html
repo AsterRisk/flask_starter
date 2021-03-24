@@ -1,26 +1,45 @@
 {% extends "base.html" %}
 
 {% block css %}
-<link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/property_info.css')}}"/>
 {% endblock %}
 <title>Register a new Property</title>
 
 {% block main %}
+    <br>
+    <br>
+    <br>
+    <br>
     <div id="property-area">
-        <img src = '/{{ prop.media_addr }}' class = "property-detail-image"/>
-        <br>
-        <span>{{ prop.title }}</span>
-        <br>
-        <span>{{ prop.price }}  {{ prop.typ }}</span>
-        <br>
-        <span>{{ prop.descr }}</span>
-        <br>
-        <span>{{ prop.no_bed }} {{ prop.no_bath }} </span>
-        <br>
-        <span>{{ prop.loc }}</span>
-        <br>
-        <button id="email-realtor">Email Realtor</button>
+        <div id = "property-detail-image">
+            <img src = '/{{ prop.media_addr }}' class = "property-picture"/>
+        </div>
+        <div id = "property-detail">
+            <br>
+            <h2>{{ prop.title }}</h2>
+            <br>
+            <br>
+            <span class = "property-price half">{{ prop.price }}</span>  
+            <span class = "property-type half">{{ prop.typ }}</span>
+            <br>
+            <br>
+            <span>{{ prop.descr }}</span>
+            <br>
+            <br>
+            <span class = "prop-beds">{{ prop.no_bed }} Bedrooms </span>
+            <span>{{ prop.no_bath }} Bathrooms </span> </span>
+            <br>
+            <br>
+            <span>{{ prop.loc }}</span>
+            <br>
+            <br>
+            <a href = "#"><button id="email-realtor">Email Realtor</button></a>
+            <br>
+        </div>
+        
     </div>
+    <br>
+        <br>
 {% endblock %}
 
 {% block js %}

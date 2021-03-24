@@ -1,0 +1,51 @@
+main{
+    background-color: #eee;
+}
+
+#prop-form-area{
+    background-color: #FFF;
+    border-radius: 5px;
+}
+
+.form-input{
+    border-radius:5px;
+    border: solid 1px;
+    border-color: #ddd;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 80%;
+}
+
+.form-input-label{
+    margin-left: 30px;
+    margin-right: 30px;
+    font-weight: bold;
+}
+
+
+
+.half{
+    width:37.5%;
+}
+
+.form-button{
+    border: 0px;
+    background-color: #22f;
+    color: #fff;
+    font-weight: bold;
+    width:15%;
+    height: 40px;
+}
+
+.form-button:hover{
+    border: 0px;
+    background-color: #55f;
+    color: #fff;
+    font-weight: bold;
+    
+}
+
+.form-media{
+    background-color: none;
+    border: 0px;
+}

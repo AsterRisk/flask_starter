@@ -5,11 +5,11 @@ from .setup import properties, query
 class Property(db.Model):
     __tablename__ = "properties"
     property_id = db.Column('prop_id', db.Integer, primary_key=True)
-    title = db.Column('title', db.String(40))
+    title = db.Column('title', db.String(60))
     no_bed = db.Column('no_bed', db.Integer)
     no_bath = db.Column('no_bath', db.Integer)
     location = db.Column('location', db.String(40))
-    desc = db.Column('descr', db.String(255))
+    desc = db.Column('descr', db.String(512))
     typ = db.Column('typ', db.String(15))
     price = db.Column('price', db.Float)
     media_addr = db.Column('media_addr', db.String(60))

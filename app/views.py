@@ -5,8 +5,6 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-
-
 from flask import render_template, request, redirect, url_for, flash, send_from_directory
 from werkzeug.utils import secure_filename
 from .__init__ import app
@@ -14,6 +12,8 @@ from .forms import PropertyForm
 from .models import Property
 import os
 from .setup import query
+
+print("--VIEWS.PY--")
 
 ###
 # Routing for your application.
@@ -40,11 +40,13 @@ def add_property():
         return render_template('property.html', form = form)
     else:
         if request.method == "POST":
+            
             savepath = None
             if form.validate_on_submit():
                 if (form.typ.data == "Select a type..."):
                     flash("Please select a type of property.", "danger")
                     return  render_template('property.html', form = form)
+                print("HELLO")
                 img = form.media.data
                 print("NAME:{}".format(img))
                 filename = secure_filename(img.filename)
@@ -57,12 +59,15 @@ def add_property():
                     return  render_template('property.html', form = form)
                 try:
                     prop = Property(title = form.title.data, no_bath=form.no_bath.data, no_bed=form.no_bed.data, location = form.location.data,\
-                                    price= form.price.data, typ = form.typ.data, desc = form.desc.data, media_addr=savepath)
+                                    price= form.price.data, typ = form.typ.data, desc = form.desc.data, media_addr=savepath[4:])
                     flash("Property has been added successfully!", 'success')
                 except Exception as e:
                     print("ERROR ERROR: \n\n{}\n\n".format(e))
                     flash("Something went wrong..., try again later.", "danger")
                 return redirect(url_for('home'))
+            else:
+                flash("Something went wrong, please try again.", "danger")
+                return  render_template('property.html', form = form)
 
 @app.route("/uploads/<filename>")
 def get_file(filename: str):
@@ -72,7 +77,9 @@ def get_file(filename: str):
 def view_properties():
     sql = "Select * from properties;"
     try:
+        print("helloooooo")
         properties = query(sql).fetchall()
+        print("byeeeeeeee")
         return render_template('view_properties.html', properties = properties)
     except Exception as e:
         print("\nERRO ERROR:{}\n".format(e))

@@ -8,4 +8,3 @@ app.config.from_object(Config)
 csrf = CSRFProtect(app)
 csrf.init_app(app)
 db = SQLAlchemy(app)
-from app import views

@@ -2,10 +2,10 @@ from .__init__ import app
 from sqlalchemy import Table, Column, Integer, String, DateTime, Float, create_engine, Boolean, MetaData, Unicode
 
 try:   
-    engine = create_engine("mysql://root:@localhost/")
+    engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
     conn = engine.connect()
     conn.execute("commit")
-    conn.execute("create database properties;")
+    conn.execute("create database info3180_project;")
     conn.close()
 except Exception as e:
     print("An error occurred, error details:\n---------------------\n{}\n---------------------\n".format(e))
